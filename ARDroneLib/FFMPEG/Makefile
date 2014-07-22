@@ -40,6 +40,8 @@ ifneq ($(FFMPEG_ARCHIVE_ROOTDIR), ffmpeg/)
 	$(SILENT_MAKE)rm -rf $(FFMPEG_ARCHIVE_ROOTDIR)
 endif
 	$(SILENT_MAKE)tar xzf parrot_ffmpeg_build_utils.tar.gz
+	# Extra pacth to remove deprecated warnings
+	$(SILENT_MAKE)sed -i "s/check_cflags -Wall/check_cflags -Wall\ncheck_cflags -Wno-deprecated-declarations/g" ffmpeg/configure
 	$(SILENT_MAKE)echo "Done"
 endif
 endif

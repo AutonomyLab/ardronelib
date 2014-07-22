@@ -35,10 +35,25 @@ INTERNAL_MKDIR=mkdir -p
 INTERNAL_ECHO=echo
 
 # (in) GENERIC_COMMAND_PREFIX
+
+# solve problem with system-wide ccache:
+# gcc is in different folder (/usr/lib/ccache) than and ar,objdump and strip.
+# This is only a hack to fix this issue
 INTERNAL_CC:=$(GENERIC_COMMAND_PREFIX)gcc
-INTERNAL_AR:=$(GENERIC_COMMAND_PREFIX)ar
-INTERNAL_OBJCOPY:=$(GENERIC_COMMAND_PREFIX)objcopy
-INTERNAL_STRIP:=$(GENERIC_COMMAND_PREFIX)strip
+
+ifneq (,$(findstring ccache,$(GENERIC_COMMAND_PREFIX)))
+    # Found ccache
+    NON_TOOLCHAIN_PATH=$(shell which ar | sed "s:/ar::")
+    NON_GENERIC_COMMAND_PREFIX=$(NON_TOOLCHAIN_PATH)/
+    INTERNAL_AR:=$(NON_GENERIC_COMMAND_PREFIX)ar
+    INTERNAL_OBJCOPY:=$(NON_GENERIC_COMMAND_PREFIX)objcopy
+    INTERNAL_STRIP:=$(NON_GENERIC_COMMAND_PREFIX)strip
+else
+    INTERNAL_AR:=$(GENERIC_COMMAND_PREFIX)ar
+    INTERNAL_OBJCOPY:=$(GENERIC_COMMAND_PREFIX)objcopy
+    INTERNAL_STRIP:=$(GENERIC_COMMAND_PREFIX)strip
+endif
+
 
 # (in) GENERIC_CFLAGS
 # (in) GENERIC_LDFLAGS
