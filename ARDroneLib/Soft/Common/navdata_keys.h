@@ -38,9 +38,13 @@ NAVDATA_OPTION( navdata_kalman_pressure_t,navdata_kalman_pressure	, NAVDATA_KALM
 NAVDATA_OPTION( navdata_hdvideo_stream_t ,navdata_hdvideo_stream  , NAVDATA_HDVIDEO_STREAM_TAG	 )
 NAVDATA_OPTION( navdata_wifi_t           ,navdata_wifi            , NAVDATA_WIFI_TAG             )
 
+NAVDATA_OPTION( navdata_gps_t            ,navdata_gps_info        , NAVDATA_GPS_TAG             )
+NAVDATA_OPTION( navdata_camera_settings_t,navdata_camera_settings , NAVDATA_CAMERA_SETTINGS_TAG  )
 
 // TODO: maybe navdata_zimmu_3000 coult be integrated into an existing navdata like navdata_adc_data_frame_t or ...
-NAVDATA_OPTION( navdata_zimmu_3000_t,     navdata_zimmu_3000      , NAVDATA_ZIMMU_3000_TAG       )
+//NAVDATA_OPTION( navdata_zimmu_3000_t,     navdata_zimmu_3000      , NAVDATA_ZIMMU_3000_TAG       )
+
+NAVDATA_OPTION( navdata_host_t			 ,navdata_host      	  , NAVDATA_HOST_TAG       )
 
 NAVDATA_OPTION_CKS( navdata_cks_t,        navdata_cks             , NAVDATA_CKS_TAG    )
 
