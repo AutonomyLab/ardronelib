@@ -328,6 +328,9 @@ ARDRONE_CONFIG_KEY_IMM_a10("gps", 	 latitude,        	  INI_DOUBLE,   float64_t,
 ARDRONE_CONFIG_KEY_IMM_a10("gps", 	 longitude,       	  INI_DOUBLE,   float64_t,  float64_t*,  (K_READ|K_WRITE|K_NOBIND), (K_READ|K_WRITE|K_NOBIND),	GPS_INVALID_COORDINATES, 			default_config_callback,CAT_SESSION)
 ARDRONE_CONFIG_KEY_IMM_a10("gps", 	 altitude,        	  INI_DOUBLE,   float64_t,  float64_t*,  (K_READ|K_WRITE|K_NOBIND), (K_READ|K_WRITE|K_NOBIND),	0.0, 			default_config_callback,CAT_SESSION)
 
+ARDRONE_CONFIG_KEY_IMM_a10("control", flying_camera_enable, INI_BOOLEAN,  bool_t,     bool_t*,     (K_READ|K_WRITE|K_NOBIND|K_SHALLOW), (K_READ|K_WRITE), FALSE,   default_config_callback, CAT_SESSION)
+ARDRONE_CONFIG_KEY_STR_a10("control", flying_camera_mode,   INI_STRING,	 string_t,   char*, 	   (K_READ|K_WRITE|K_NOBIND|K_SHALLOW), (K_READ|K_WRITE|K_NOBIND|K_SHALLOW), "10000,0,492767188,-1229157891,1000,100,100,525000,0,0",  default_config_callback,CAT_SESSION)
+
 /*- Multi configuration management -*/
 ARDRONE_CONFIG_KEY_STR_a10("custom",  application_id,      INI_STRING,   string_t,    char*,    (K_READ|K_WRITE|K_NOBIND|K_SHALLOW), (K_READ|K_WRITE), DEFAULT_CONFIG_ID,     default_config_callback,CAT_SESSION)
 ARDRONE_CONFIG_KEY_STR_a10("custom",  application_desc,    INI_STRING,   string_t,    char*,    (K_READ|K_WRITE), (K_READ|K_WRITE), DEFAULT_APPLICATION_DESC,          application_desc_callback,CAT_APPLI)
