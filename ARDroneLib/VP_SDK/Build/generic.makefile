@@ -135,7 +135,7 @@ $(TWEAKED_PARROTOS_MAKEFILE): $(PARROTOS_MAKEFILE)
 	@echo "all:" >> $(TWEAKED_PARROTOS_MAKEFILE)
 	@cat $(PARROTOS_MAKEFILE) | grep -v "^[-]*include" | grep -v "^all:" | sed -e "s@^\([A-Z]*[=]*\)\([ \t]*\)\(/\)@\1\2@" | sed -e "s@^clean:@NOCLEAN:@" >> $(TWEAKED_PARROTOS_MAKEFILE)
 
-ifneq ("$(INTERNAL_LIBRARY_TARGET_OFILES)","")
+ifneq ("$(strip $(INTERNAL_LIBRARY_TARGET_OFILES))","")
 $(GENERIC_TARGET_LIBRARY): $(INTERNAL_LIBRARY_TARGET_OFILES)
 	@$(CREATE_TARGET_DIRECTORY)
 	@$(INTERNAL_ECHO) "ar $(GENERIC_ARFLAGS)" $(subst $(GENERIC_LIBRARY_TARGET_DIR)/,,$@ $^)
