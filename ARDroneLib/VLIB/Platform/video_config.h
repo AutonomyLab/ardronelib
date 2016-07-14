@@ -8,7 +8,7 @@
 ////////////////////////////////////////////
 #if TARGET_CPU_ARM == 1
 // IPhone
-#if defined (USE_ANDROID) || defined (TARGET_OS_IPHONE)
+#if defined (USE_ANDROID) || defined (TARGET_OS_IPHONE) || defined (USE_LINUX)
 
 #include "arm11/video_config.h"
 #endif // TARGET_OS_IPHONE

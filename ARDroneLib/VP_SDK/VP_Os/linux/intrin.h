@@ -9,22 +9,37 @@
 
 #if TARGET_CPU_X86 == 1
 
-static INLINE uint32_t _BitScanReverse(uint32_t* index, uint32_t mask)
+/*static INLINE uint32_t _BitScanReverse(uint32_t* index, uint32_t mask)
 {
   __asm__("bsrl %[mask], %[index]" : [index] "=r" (*index) : [mask] "mr" (mask));
 
   return mask ? 1 : 0;
-}
+}*/
 
+/*static INLINE uint32_t _byteswap_ulong(uint32_t value)
+{
+  int32_t tmp;
 
-static INLINE uint32_t _byteswap_ulong(uint32_t value)
+  __asm __volatile(
+    "eor        %1, %2, %2, ror #16\n"
+    "bic        %1, %1, #0x00ff0000\n"
+    "mov        %0, %2, ror #8\n"
+    "eor        %0, %0, %1, lsr #8"
+    : "=r" (value), "=r" (tmp)
+    : "r" (value)
+  );
+
+  return value;
+}*/
+
+/*static INLINE uint32_t _byteswap_ulong(uint32_t value)
 {
   __asm("bswap %0":
       "=r" (value):
       "0" (value));
 
   return value;
-}
+}*/
 
 static inline uint32_t clz(uint32_t code)
 {

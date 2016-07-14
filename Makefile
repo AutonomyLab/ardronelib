@@ -1,6 +1,7 @@
 SDK_PATH:=$(shell pwd)/ARDroneLib
 PC_TARGET=yes
 USE_LINUX=yes
+USE_ARMV7=yes
 
 
 ifdef MYKONOS
@@ -15,10 +16,13 @@ $(SDK_TARGET_DIR)
 
 SDK_FLAGS+="USE_APP=no"
 SDK_FLAGS+="USE_LIB=yes"
+SDK_FLAGS+="USE_LINUX=yes"
+SDK_FLAGS+="USE_ARMV7=yes"
+
 
 all: 
-	@$(MAKE) -C $(SDK_PATH)/Soft/Build $(TMP_SDK_FLAGS) $(SDK_FLAGS) $(MAKECMDGOALS) USE_LINUX=yes
-	@$(MAKE) -C $(SDK_PATH)/VP_SDK/Build $(TMP_SDK_FLAGS) $(SDK_FLAGS) $(MAKECMDGOALS) USE_LINUX=yes
+	@$(MAKE) -C $(SDK_PATH)/Soft/Build $(TMP_SDK_FLAGS) $(SDK_FLAGS) $(MAKECMDGOALS)
+	@$(MAKE) -C $(SDK_PATH)/VP_SDK/Build $(TMP_SDK_FLAGS) $(SDK_FLAGS) $(MAKECMDGOALS)
               
 install:
 	mkdir -p ${INSTALL_PREFIX}

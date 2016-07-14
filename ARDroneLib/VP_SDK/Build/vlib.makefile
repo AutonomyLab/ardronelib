@@ -59,6 +59,12 @@ GENERIC_LIBRARY_SOURCE_FILES+=			\
 	Platform/arm9_P6/UVLC/uvlc_mb_layer_p6.S
 endif
 
+ifeq ($(USE_ARMV7),yes)
+   GENERIC_LIBRARY_SOURCE_FILES+=              \
+        Platform/arm11/video_utils.c           \
+        Platform/arm11/UVLC/uvlc_codec.c
+endif
+
 ifeq ($(USE_IPHONE),yes)
   ifeq ($(PLATFORM_NAME),iphoneos)
 	GENERIC_LIBRARY_SOURCE_FILES+=			\
